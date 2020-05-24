@@ -4,8 +4,9 @@ import lombok.Data;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
-import org.springframework.data.cassandra.core.mapping.UserDefinedType;
 
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -20,16 +21,17 @@ public class Employee {
     @Column(value = "LAST_NAME")
     private String lastName;
 
-    @Column(value = "home")
+    @Column(value = "HOME")
     private Address home;
 
+    @Column(value = "AGE")
+    private int age;
+
+    @Column(value = "DOB")
+    private Date dob;
+
+    @Column(value = "CONTACTS")
+    private List<String> contacts;
+
 }
 
-@Data
-@UserDefinedType(value = "address")
-class Address {
-    private String street;
-    private String city;
-    private String state;
-    private String zipCode;
-}
